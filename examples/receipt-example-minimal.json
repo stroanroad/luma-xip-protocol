@@ -1,0 +1,41 @@
+{
+  "receipt_id": "ulid-01J23456789ABCDEF",
+  "prev_receipt_hash": null,
+  "chain_id": "gov-ni/cannabis-hub/clinic-001",
+  "event_type": "health.prescription.issued",
+  "event_ts": "2025-11-28T12:00:00Z",
+  "issued_ts": "2025-11-28T12:00:01Z",
+  "actor": {
+    "role": "doctor",
+    "entity_id": "hash:doctor-123",
+    "org_id": "clinic-001",
+    "auth_context": "smartcard"
+  },
+  "subject_ref": {
+    "type": "patient_id",
+    "value": "hash:patient-456",
+    "hashed": true
+  },
+  "jurisdiction": "GB-NIR",
+  "payload": {
+    "prescription_id": "rx-2025-000123",
+    "product_code": "cannabis-oil-10ml-10pct",
+    "dosage": "0.5ml twice daily",
+    "days_supplied": 30
+  },
+  "integrity": {
+    "content_hash": "sha256:abc123...",
+    "signing_key_id": "gov-ni-hscni-key-1",
+    "signature": "base64:signaturebytes...",
+    "algo": "ed25519",
+    "anchors": []
+  },
+  "routing": {
+    "preferred_ledger": "cbdc-gb",
+    "mirror_to_xrpl": true
+  },
+  "meta": {
+    "hub_version": "luma-core-1.5",
+    "xip_version": "1.0.0-alpha"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://luma.connect/xip/schema/xip-receipt-v1.json",
+  "title": "XIP Receipt v1",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "chain_id",
+    "event_type",
+    "event_ts",
+    "issued_ts",
+    "actor",
+    "subject_ref",
+    "jurisdiction",
+    "payload",
+    "integrity"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "description": "Globally unique ID (UUID/ULID)."
+    },
+    "prev_receipt_hash": {
+      "type": ["string", "null"],
+      "description": "Hash of previous receipt in chain (null for first)."
+    },
+    "chain_id": {
+      "type": "string",
+      "description": "Identifier of the local chain (hub/tenant/device)."
+    },
+    "event_type": {
+      "type": "string",
+      "description": "Dot-separated event type (e.g. gov.case.opened)."
+    },
+    "event_ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "issued_ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actor": {
+      "type": "object",
+      "required": ["role"],
+      "properties": {
+        "role": { "type": "string" },
+        "entity_id": { "type": ["string", "null"] },
+        "org_id": { "type": ["string", "null"] },
+        "auth_context": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "subject_ref": {
+      "type": "object",
+      "required": ["type", "value"],
+      "properties": {
+        "type": { "type": "string" },
+        "value": { "type": "string" },
+        "hashed": { "type": "boolean", "default": false }
+      },
+      "additionalProperties": false
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "Country/region (e.g. GB-NIR)."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Event-specific payload data."
+    },
+    "integrity": {
+      "type": "object",
+      "required": ["content_hash", "signing_key_id", "signature", "algo"],
+      "properties": {
+        "content_hash": { "type": "string" },
+        "signing_key_id": { "type": "string" },
+        "signature": { "type": "string" },
+        "algo": { "type": "string" },
+        "anchors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "ledger_id", "tx_ref"],
+            "properties": {
+              "type": { "type": "string" },
+              "ledger_id": { "type": "string" },
+              "tx_ref": { "type": "string" },
+              "anchored_ts": {
+                "type": ["string", "null"],
+                "format": "date-time"
+              }
+            },
+            "additionalProperties": false
+          },
+          "default": []
+        }
+      },
+      "additionalProperties": false
+    },
+    "routing": {
+      "type": "object",
+      "description": "Optional hints for routing to CBDC/XRPL/bank/mesh.",
+      "additionalProperties": true
+    },
+    "meta": {
+      "type": "object",
+      "description": "Optional metadata.",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
