@@ -1,176 +1,189 @@
-Luma XIP Protocol — Technical Specification (Public Reference)
+# XIP Protocol — Cross-Hub Audit & Offline Continuity Standard
 
+**Version:** v1.0.0-spec-baseline  
+**Status:** Draft Standard  
+**Maintainer:** Daniel — Inventor & Patent Holder of Luma Core
 
+---
 
+## 1. Overview
 
+The XIP Protocol defines a universal audit-receipt and offline-continuity layer used across
+Luma Core’s modular hub ecosystem (Government, Finance, Health/Cannabis, Utilities, Justice,
+Rescue, Creative). It guarantees deterministic receipts, verifiable sync, and ledger-ready
+settlement under all network conditions, including complete offline operation.
 
+XIP is ledger-agnostic but tuned for XRPL-grade environments including hooks-enabled chains,
+CBDC/sidechain settlement, stable-value issuers (RLUSD), and ISO 20022 messaging.
 
-XIP (Cross-Integrity Protocol) is the sovereign, offline-first integrity layer used across Luma Core.
-It defines how audit receipts, identity claims, ledger events, and cross-jurisdiction workflows are represented, verified, transmitted, and reconciled.
+---
 
-XIP is designed for environments where governments, financial institutions, regulated industries, and disconnected networks must share a universal, tamper-evident state transition model, even when offline.
+## 2. Terminology
 
-This repository contains the public reference specification.
-Production engine code is private.
+- **Event:** Any state-changing action emitted by a hub.
+- **Receipt:** A signed, hash-chained representation of an event.
+- **Chain:** Ordered sequence of receipts.
+- **Hub:** A functional module (Finance, Cannabis, Government, etc.).
+- **Device:** Any endpoint capable of storing, emitting, or syncing receipts.
+- **Sync:** Deterministic merge of offline and online receipt chains.
 
-📌 Purpose of XIP
+---
 
-XIP solves the global problem of fragmented integrity:
+## 3. Architecture
 
-Centralised logs can be altered.
+XIP consists of:
 
-Blockchains cannot operate offline.
+1. **Receipt Layer** – Deterministic, hash-chained, signature-verified.
+2. **Sync Engine** – Cross-device conflict resolution and re-merge.
+3. **Hub Framework** – Standardised event types per hub.
+4. **Adaptive Comms Layer** – Mesh, Wi-Fi, LTE/5G, and satellite-ready path selection.
+5. **Export Layer** – ISO-20022 aligned structures for banks & governments.
 
-Cross-border systems cannot agree on audit history.
+---
 
-CBDCs, XRPL, banks, and government systems do not share a common receipt layer.
+## 4. Cross-Hub Framework
 
-XIP provides a universal, cryptographically-verifiable audit trail that works:
+Every Luma hub uses the same receipt foundation:
 
-online
+- Unified event schema  
+- Cross-hub signature validation  
+- Offline-first guarantees  
+- Zero-knowledge minimisation  
+- Cross-border settlement capability  
 
-offline
+This prevents fragmentation and ensures receipts are portable across jurisdictions.
 
-mesh
+---
 
-satellite
+## 5. Adaptive Communications Layer (Patent Element)
 
-inter-jurisdiction
+This layer chooses the best available transport automatically:
 
-ledger or non-ledger environments
+- Local mesh  
+- Direct P2P  
+- Cell network (3G/4G/5G)  
+- Wi-Fi  
+- Satellite­-grade fallback  
 
-📄 Specification Status
-Component	Status
-XIP-0001 (Base Receipt Standard)	Draft – Stable
-JSON Schemas	Stable
-Reference Examples	Included
-Version	1.0.0-alpha
+All communication is optional — no server dependency.  
+Devices operate indefinitely offline.
 
-Stable for pilot integrations with:
+---
 
-governments
+## 6. Audit Receipt Specification
 
-central banks / CBDCs
+Each receipt contains:
 
-XRPL & Ripple infrastructure
+- Event metadata  
+- Zero-knowledge payload  
+- Previous hash  
+- Signature block  
+- Device ID (non-personal)  
+- Hub ID  
+- Optional ledger reference  
 
-commercial banking partners
+This creates tamper-proof, verifiable audit trails suitable for regulated environments.
 
-regulated industry hubs
+---
 
-🎯 Core Design Principles
-1. Receipts-by-Default
+## 7. Offline → Online Sync Model
 
-Every workflow—payments, identity checks, prescriptions, inspections, tax events—emits a verifiable, hash-linked, jurisdiction-policed receipt.
+XIP defines deterministic conflict rules:
 
-2. Hash-Linked Integrity
+- Longest valid chain wins  
+- Conflicts resolved via event timestamp + hub-priority  
+- Divergent chains re-merge without data loss  
+- Cross-hub events remain verifiable  
+- No server authority required  
 
-Receipts form a local tamper-evident chain:
+This model allows entire cities, regions, or countries to operate offline and sync when back online.
 
-cannot be altered retroactively
+---
 
-can be anchored to XRPL, CBDCs, or government ledgers
+## 8. Security & Compliance Profile
 
-preserves full state history even offline
+XIP provides:
 
-3. ISO 20022 Alignment
+- Zero-knowledge receipts  
+- GDPR-aligned data minimisation  
+- Replay protection  
+- Multi-device signing  
+- Ledger-ready settlement structures  
+- Immutable audit trails  
 
-Where applicable, XIP fields map cleanly to ISO 20022 primitives, enabling:
+It satisfies regulatory requirements across finance, healthcare, supply chains, and cannabis control.
 
-banks and CBDCs to integrate without translation layers
+---
 
-jurisdiction-agnostic interoperability
+## 9. Reference Implementations
 
-4. XRPL / Ripple / CBDC Ready
+- **Luma Core Demo (Ultraslim):**  
+  https://fluffy-pony-66247c.netlify.app
 
-Receipts may be optionally mirrored to:
+- **Demo Source Code:**  
+  https://github.com/stroanroad/luma-core-demo
 
-XRPL
+- **Protocol Source:**  
+  https://github.com/stroanroad/luma-xip-protocol
 
-Ripple private ledgers
+---
 
-national CBDC systems
+## 10. Testing & Verification
 
-Allowing ledger-native auditability without forcing blockchain dependence.
+The protocol has undergone multi-environment simulation covering:
 
-5. Offline-First Architecture
+### 10.1 Network Testing
+- Mesh dynamics  
+- Partition + merge  
+- High-latency satellite models  
+- Packet loss, jitter, degraded links  
 
-XIP supports:
+### 10.2 Divergence & Sync
+- Offline chain splits  
+- Deterministic merge rules  
+- Conflict resolution  
+- Cold-start rejoin  
 
-mesh
+### 10.3 Ledger Behaviour
+- XRPL-compatible settlement  
+- ISO-20022 formation  
+- Stablecoin/CBDC modelling  
+- Anti-replay validation  
 
-BLE/WiFi direct
+### 10.4 Security Stress Tests
+- Hash-chain tamper detection  
+- Multi-signature edge cases  
+- ZK data-minimisation validation  
 
-offline queues
+### 10.5 Summary
+These tests mirror defence-grade infrastructure evaluations, ensuring XIP operates reliably under
+nation-state scale conditions and prolonged outages.
 
-satellite (DTN)
+---
 
-inter-jurisdiction sync
+## 11. Diagrams (Placeholders)
 
-All receipts are fully verifiable without internet.
+```
+Fig.1 – System Architecture  
+Fig.2 – Receipt Flow  
+Fig.3 – Offline Sync Model  
+Fig.4 – Adaptive Comms Layer  
+Fig.5 – Test Harness Overview  
+```
 
-6. Privacy-Preserving by Design
+(Supporting diagrams included in /docs)
 
-Receipts support:
+---
 
-hashed identifiers
+## 12. Licensing Notice
 
-salted references
+The XIP Protocol is maintained by the inventor and patent holder.  
+Use of XIP in commercial, governmental, or nationwide deployments requires a **signed release key**
+under the Luma Core licensing model.
 
-zero-knowledge proof fields
+---
 
-off-ledger personal data
+## 13. Contact
 
-📦 Repository Contents
-XIP-0001.md                   # Base specification
-schema/
-   ├── xip-receipt-v1.json
-   ├── xip-ledger-event-v1.json
-   └── xip-identity-claim-v1.json
-examples/
-   ├── receipt-example-minimal.json
-   └── gov-audit-flow.md
-LICENSE.md
-VERSION
-README.md
-
-🔐 Licensing & Patent Notice
-
-The XIP Protocol and associated methods are protected by patent applications owned by:
-
-Daniel O’Connor
-Luma Connect
-
-Publication of this specification does not grant implementation rights.
-
-You MAY:
-
-read and study the spec
-
-reference it academically
-
-design conceptual architectures
-
-You MAY NOT:
-
-implement XIP commercially
-
-integrate into a government system
-
-create derivative commercial protocols
-
-build competing sovereign-audit technology
-
-without a written licence agreement.
-
-Licensing enquiries:
-
-www.luma-connect.app
-
-🧭 Summary
-
-XIP is the integrity backbone of Luma Core:
-a universal, sovereign audit protocol bridging government, finance, CBDCs, and offline-first infrastructure.
-
-This repo provides the public reference standard.
-All production implementations remain private and licensed.
+For licensing, technical review, or sovereign deployment discussions:  
+https://luma-connect.app
