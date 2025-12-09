@@ -127,7 +127,8 @@ It satisfies regulatory requirements across finance, healthcare, supply chains, 
 ## 9. Reference Implementations
 
 - **Luma Core Demo (Ultraslim):**  
-  https://melodious-bublanina-c0c6ec.netlify.app
+  https://dancing-narwhal-bb57b2.netlify.app
+
 
 
 - **Demo Source Code:**  
