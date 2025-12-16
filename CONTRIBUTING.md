@@ -38,4 +38,4 @@ If you do not agree with these terms, please do not submit contributions.
 ## 4. Contact
 
 For formal collaboration or standards work, visit:  
-https://luma-connect.app
+https://verimesh.net

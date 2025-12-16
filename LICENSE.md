@@ -53,4 +53,4 @@ this demo or the use or other dealings in this work.
 ## 5. Contact
 
 For licensing and sovereign deployment discussions, visit:  
-https://luma-connect.app
+https://verimesh.net
