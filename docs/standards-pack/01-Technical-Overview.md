@@ -49,6 +49,14 @@ Receipts form a **hash chain**, producing a tamper-evident audit log.
 - Verification requires no network access.  
 - Chains can diverge and re-merge deterministically.  
 
+## Non-Interference with Financial Messaging Standards
+
+XIP is designed to be message-agnostic and non-invasive. When integrated with
+financial messaging standards such as ISO 20022, all XIP-specific data is carried
+exclusively as supplementary metadata. Core financial semantics, validation rules,
+and regulatory meaning are defined entirely by the host messaging standard and
+remain unchanged by the presence of XIP data.
+
 ---
 
 ## 4. Sync Engine

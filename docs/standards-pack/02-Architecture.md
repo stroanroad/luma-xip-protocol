@@ -43,6 +43,9 @@ These layers execute entirely on-device, enabling infrastructure-free operation.
            |              Receipt Layer                |
            +-----------------------------------------+
 
+
+Typical flow: Device → Hub → Hash Chain → Optional Ledger → ISO 20022 Export.
+
 ---
 
 ## 3. Receipt Layer Architecture

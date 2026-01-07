@@ -18,6 +18,10 @@ Where used, XRPL provides:
 - Cross-border value movement evidence
 - Stablecoin and CBDC compatibility (e.g. XRPL-issued assets)
 
+This section is non-normative. XIP does not require the use of any distributed ledger
+for correctness, verification, or operation. Ledger integration is optional and
+entirely controlled by the deploying operator or regulator.
+
 ---
 
 ## 2. Design Principles

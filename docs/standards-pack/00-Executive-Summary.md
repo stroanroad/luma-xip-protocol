@@ -1,4 +1,4 @@
-# XIP Protocol — Executive Summary  
+ # XIP Protocol — Executive Summary  
 **Version:** v1.0.0  
 **Document:** 00-Executive-Summary  
 **Status:** Released  
@@ -129,6 +129,12 @@ This ensures:
 - Revenue integrity  
 - Protocol consistency  
 - Protection against hostile forks  
+
+XIP operates as a cryptographic event and receipt layer that integrates with existing
+financial and regulatory messaging standards, including ISO 20022, without modifying
+or reinterpreting their core semantics. XIP does not replace payment rails, settlement
+systems, or regulatory frameworks, and may be ignored by receivers without affecting
+message validity.
 
 ---
 

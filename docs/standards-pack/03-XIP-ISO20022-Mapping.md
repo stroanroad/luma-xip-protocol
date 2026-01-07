@@ -68,6 +68,17 @@ XIP receipts may be exported into ISO 20022 message families covering:
 - Government disbursements  
 - Regulatory and supervisory reporting  
 
+| Domain | ISO 20022 Message Families |
+|------|-----------------------------|
+| Payments | pacs, pain, camt |
+| Merchant Transactions | auth, acmt |
+| CBDC and Stablecoins | pacs, camt (profiled) |
+| Government Disbursements | pain, camt, admi |
+| Regulatory Reporting | camt, auth, admi |
+
+ISO 20022 is governed as an open, neutral financial messaging standard and remains
+fully authoritative over message semantics and validation.
+
 ---
 
 ## 5. Core Field Mapping
