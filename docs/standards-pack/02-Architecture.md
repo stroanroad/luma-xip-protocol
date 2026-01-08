@@ -119,6 +119,12 @@ validation.
 - Zero-knowledge by default  
 - Verifiable permanently offline  
 
+Receipt hash chains are local audit structures and do not constitute a global
+consensus ledger, blockchain, or central bank digital currency (CBDC) system.
+XIP does not define monetary policy, settlement logic, or issuance semantics,
+and does not replace or interfere with existing financial or central banking
+infrastructure.
+
 ---
 
 ## 4. Sync Engine Architecture
