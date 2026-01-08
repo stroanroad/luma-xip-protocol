@@ -136,6 +136,16 @@ enable continuous tracking, inference, or automated decision-making about
 individual behaviour. Any aggregation, analytics, or monitoring functions are
 explicitly external to the XIP standard and remain the responsibility of the
 adopting system and governing authority.
+XIP does not perform automated decision-making, scoring, or artificial
+intelligence–driven inference. The standard records verifiable events and
+their ordering only. Any use of analytics, rules engines, or AI systems
+operating on receipt data occurs outside the scope of XIP and is governed by
+the adopting system, applicable law, and oversight mechanisms.
+XIP does not define, enforce, or automate content moderation, censorship, or
+policy-based suppression. Receipt issuance records the occurrence of events
+without judging legality, appropriateness, or intent. Any moderation,
+enforcement, or policy action is performed by external systems and authorities
+in accordance with applicable law and governance frameworks.
 
 ---
 
